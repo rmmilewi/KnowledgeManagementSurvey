@@ -1,0 +1,13 @@
+
+Hello,
+
+This email is an invitation to participate in a survey of Trilinos developers being conducted by the Interoperable Design of Extreme-scale Application Software (IDEAS) team, an arm of the Exascale Computing Project (ECP). The aim of IDEAS-ECP is to improve scientific productivity by qualitatively changing scientific software developer productivity.
+
+The purpose of this survey is to study the knowledge management practices of scientific software developers, that is, to understand the kinds of knowledge that are created and shared and their relationship to the software project. The questions ask about the work you do, how you coordinate and collaborate with others, and any obstacles you may face.
+
+Only the researchers involved in this study will see your responses. Your participation in this study is voluntary. If you do not want to participate, please disregard this email. If you have any questions or concerns, please contact Reed Milewicz (1426), the PI for this survey. You are welcome to reach out to him by email (rmilewi@sandia.gov), phone (505-845-0278), or in person (CSRI, room 253) if you have any concerns about your participation or the survey process. A copy of this survey is attached with this email.
+
+WARNING: Not all PDF readers will allow you to fill out this survey, and not all will allow you to save your results. If you are able to fill out the results, it is highly recommended that you use the Print option and print the result to a PDF file. Alternatively, you can print out a paper copy of the attached survey to complete it. In either case Once you have done so, you may scan and/or email the document to rmilewi@sandia.gov. Alternatively, place the survey in a sealed envelope and deliver it to CSRI/253.
+
+Thanks,
+The IDEAS Team

@@ -1,0 +1,406 @@
+\documentclass[12pt, letterpaper]{article}
+%\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+%\usepackage{latexsym}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+%\usepackage[latin1]{inputenc}
+%\usepackage{paperandpencil}
+\usepackage{tabularx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{textcomp,amsmath,longtable}
+\usepackage{graphicx}
+%\usepackage{background}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % sets both header and footer to nothing initially. This is done to get rid of that bar that shows up below the header.
+\renewcommand{\headrulewidth}{0pt}
+
+%The following adds the Sandia logo to every page.
+\fancyfoot[L]{
+	\begin{minipage}{\textwidth}
+	\includegraphics[width=0.25\textwidth,height=30pt,keepaspectratio]{snllineblk.eps}
+	\end{minipage}%
+}
+
+%PII warning on every page.
+%\fancyhead[C]{\tiny{NOTE: This survey, once completed, contains Personally Identifiable Information (PII).}}
+
+
+%Lastly, we have a PII watermark on every page.
+%\backgroundsetup{
+%	scale=10,
+%	color=black,
+%	opacity=0,
+%	angle=45,
+%	position=current page,
+%	contents={PII}
+%}
+
+
+\newcommand{\incrcounter}[1]{\addtocounter{#1}{1}}
+\newcommand{\decrcounter}[1]{\addtocounter{#1}{-1}}
+
+%% Definitions for questions
+\newcounter{questionnum}
+\setcounter{questionnum}{0}
+\incrcounter{questionnum}
+
+\newcounter{subquestionnum}
+\setcounter{subquestionnum}{0}
+\incrcounter{subquestionnum}
+
+\setlength{\fboxsep}{1pt}
+
+%\newcommand{\question}[2]{\setcounter{subquestionnum}{0} \textbf{\#\thequestionnum}: #1 #2 \incrcounter{questionnum}}
+\newcommand{\question}[2]{\setcounter{subquestionnum}{0} \textbf{\#\thequestionnum}: #1 #2}
+
+
+\newcommand{\checkbox}[1]{
+    \hfill \relax\thequestionnum.\thesubquestionnum\hfill\hfill & \textsf{#1} & { \framebox(14,14){} } \incrcounter{subquestionnum} \\ \hline
+}
+
+
+\newcommand{\likertfive}[1]{
+    \hfill \relax\thequestionnum.\thesubquestionnum\hfill\hfill &\textsf{#1} &{ \framebox(14,14){} } & { \framebox(14,14){} } &{\ \framebox(14,14){} } & { \framebox(14,14){}} & { \framebox(14,14){}} \incrcounter{subquestionnum}\\ \hline
+}
+
+\newcommand{\likertthree}[1]{
+    \hfill \relax\thequestionnum.\thesubquestionnum\hfill\hfill &\textsf{#1} &{ \framebox(14,14){} } & { \framebox(14,14){}} & { \framebox(14,14){}} \incrcounter{subquestionnum}\\ \hline
+}
+
+\newcommand{\likertsix}[1]{
+    \hfill \relax\thequestionnum.\thesubquestionnum\hfill\hfill &\textsf{#1} &{ \framebox(14,14){} } & { \framebox(14,14){} } &{\ \framebox(14,14){} } & { \framebox(14,14){}} & { \framebox(14,14){}} & { \framebox(14,14){}} \incrcounter{subquestionnum}\\ \hline
+}
+
+
+
+
+\newcommand{\heading}[1]{
+&\multicolumn{4}{|l}{\bf\textsf{#1}}\\ \hline %
+}
+ \newcommand{\divider}{\hline}
+
+
+\newcommand{\triplesignature}[3]{%
+  \parbox{\textwidth}{
+    \vspace{1cm}
+
+    \parbox{4cm}{
+      \centering
+      \fbox{\TextField[name=first,width=4cm,charsize=12pt]{}}
+      \rule{4cm}{1pt}\\
+       #1 
+    }
+    \hfill
+    \parbox{4cm}{
+      \centering
+      \fbox{\TextField[name=second,width=4cm,charsize=12pt]{}}
+      \rule{4cm}{1pt}\\
+      #2
+    }
+    \hfill
+    \parbox{4cm}{
+      \centering
+      \fbox{\TextField[name=third,width=4cm,charsize=12pt]{}}
+      \rule{3.9cm}{1pt}\\
+      #3
+    }
+    %\vspace{2cm}
+  }
+}
+
+
+
+
+%This is the title that goes on the cover page.
+\title{Survey on Knowledge and Knowledge Management}
+\date{}
+
+\begin{document}
+	\maketitle
+	\begin{center}
+	\includegraphics[width=0.25\textwidth,keepaspectratio]{IDEAS_logo_small2_90.png}
+	\end{center}
+	
+	\begin{center}
+	\includegraphics[width=0.25\textwidth,keepaspectratio]{ecp-logo.png}
+	\end{center}
+	
+	\begin{center}
+	\shadowbox{%
+	\begin{minipage}{1\linewidth}
+		This document is a survey of knowledge management practices of scientific software developers. Large-scale scientific software projects are among the most 		knowledge-intensive undertakings in all of human history, consisting of extremely diverse communities of practice and inquiry. The purpose of this survey is to 		understand the kinds of knowledge that are created and shared and their relationship to the software project.
+		\newline
+		
+		This study is being conducted through the Interoperable Design of Extreme-scale Application Software (IDEAS-ECP) project. Only the researchers involved in this 		study will see your responses. Your participation in this study is voluntary. If you do not want to participate, please return the questionnaire to the 		researcher. You also do not have to answer any question that makes you uncomfortable. This survey is expected to take about 20 minutes to complete.
+		\newline
+		
+		\textbf{WARNING}: Not all PDF readers will allow you to fill out this survey, and not all will allow you to save your results. If you are able to fill out the 		results, it is highly recommended that you use the Print option and print the result to a PDF file. Alternatively, you can print out a paper copy of the attached survey 		to complete it. In either case, once you have done so, you may scan and/or email the document to rmilewi@sandia.gov. Alternatively, place the survey in a sealed envelope 		and deliver it to CSRI/253.
+		\newline
+
+	\end{minipage}
+	}
+	\end{center}
+	
+	\thispagestyle{fancy}
+	\pagebreak
+	
+	
+	%INFORMED CONSENT FORM
+	
+	\begin{center}
+	\shadowbox{%
+	\begin{minipage}{1\linewidth}
+		\begin{center}
+			\textbf{Informed Consent Form}
+		\end{center}
+		
+		\textbf{1. Participation} \newline
+		Your participation in this survey is voluntary. You may refuse to take part in the research, and you are free to decline to answer any particular question you 		do not wish to answer for any reason. \newline
+		
+		\textbf{2. Benefits} %\newline
+		
+		You will receive a report detailing the anonymized results of this survey. The researchers of this study intend on using the data you provide to produce a 		publication characterizing the work habits of scientific software developers. The aim is to inform better policies and practices for the broader scientific software 		community. \newline
+		
+		\textbf{3. Confidentiality} %\newline
+		
+		Your responses will remain anonymous. No one will be able to identify you or your answers, and no one will know whether or not you participated in the study, not even your manager. This 		form asks your name and Github handle (if you have one). However, any uniquely identifying information we collect will be stored separately from the survey responses, and it 		will not be present in the data we use for analysis.\newline
+		
+		\textbf{4. Risks} %\newline
+		
+		The possible risks or discomforts of the study are minimal. You may feel somewhat uncomfortable answering questions about the problems you face in doing your 		work. We reiterate, however, that none of your responses will be tied to you individually. \newline
+		
+		\textbf{5. Contact} %\newline
+		
+		If you have any questions or concerns, please contact Reed Milewicz (1426), the PI for this survey. You are welcome to reach out to him by email 		(rmilewi@sandia.gov) or phone (505-845-0278) if you have any concerns about your participation or the survey process. \newline
+		
+		\textbf{6. Consent} %\newline
+		
+		Signing your name below indicates that
+
+		\begin{enumerate} 
+			\item You have read the above information.
+			\item You voluntarily agree to participate.
+		\end{enumerate}
+		
+		Additionally, we ask for two more things. First, we request your Github handle you use to contribute to the Trilinos project (if any); this information is needed to link 		your survey responses to your contributions in order to better understand the evolution of the software project. Second, to aid in de-identifying your survey responses, 		please provide a code name below. This self-identification code will take the place of any identifying information collected in this survey. It will only be known to the 		researchers, and only the researchers will have a key linking your name to your pseudonym.
+		
+		\triplesignature{Your Signature}{Your Github handle}{Your Code Name}
+
+	\end{minipage}
+	}
+	\end{center}
+	
+	
+	
+	
+	
+	\pagebreak
+	
+	\question{Your Code Name}{ \fbox{\TextField[name=name,width=5cm,charsize=12pt]{}}   } \incrcounter{questionnum}
+	%\question{Your github handle}{ \fbox{\TextField[name=name,width=5cm,charsize=12pt]{}}   }
+	
+	\question{Your relationship to Sandia}{
+		\begin{longtable}{l l}
+		 	Student Intern & \framebox(14,14){} \\
+		 	Postdoctoral Appointee & \framebox(14,14){} \\
+			Contractor & \framebox(14,14){} \\
+		 	Limited-term Employee & \framebox(14,14){} \\
+		 	Full-time Employee & \framebox(14,14){} \\
+		 	Other (please specify) & \fbox{\TextField[name=jobother,height=0.5cm,width=5cm,charsize=12pt]{}} \\
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+	\question{What is the highest level of education which you have completed?} {
+		\begin{longtable}{l l}
+		 	High school degree or equivalent & \framebox(14,14){} \\
+		 	Associate's degree & \framebox(14,14){} \\
+			Bachelor's degree & \framebox(14,14){} \\
+		 	Master's degree & \framebox(14,14){} \\
+		 	Doctoral degree & \framebox(14,14){} \\
+		\end{longtable}	
+	} \incrcounter{questionnum}
+	
+	\question{How many years of experience do you have working in your area of interest?}{
+		\begin{longtable}{l l}
+			 Less than 2 years & \framebox(14,14){} \\
+			 2-5 years & \framebox(14,14){} \\
+			 6-10 years & \framebox(14,14){} \\
+			 11-15 years & \framebox(14,14){} \\
+			 16-20 years & \framebox(14,14){} \\
+			 21-25 years & \framebox(14,14){} \\
+			 More than 25 years & \framebox(14,14){} \\
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+	\question{How many people do you work with on a regular basis?}{
+		\begin{longtable}{l l}
+			 1-2 & \framebox(14,14){} \\
+			 3-5 & \framebox(14,14){} \\
+			 6-10 & \framebox(14,14){} \\
+			 11-15 & \framebox(14,14){} \\
+			 16-20 & \framebox(14,14){} \\
+			 More than 20 & \framebox(14,14){} \\
+		\end{longtable}	
+	} \incrcounter{questionnum}
+
+	\pagebreak 
+	
+	\question{How many projects do you contribute to in the course of a year? These activities may be funded or unfunded.}{
+		\begin{longtable}{l l}
+			 1 & \framebox(14,14){} \\
+			 2 & \framebox(14,14){} \\
+			 3 & \framebox(14,14){} \\
+			 4 or more & \framebox(14,14){} \\
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+	\question{Select one or more topics that encompass your areas of interest.}{
+		\begin{longtable}{l l}
+			Scalable solvers & \framebox(14,14){} \\
+			Optimization & \framebox(14,14){} \\
+			Adaptivity and mesh refinement & \framebox(14,14){} \\
+			Graph-based, discrete, and combinatorial algorithms & \framebox(14,14){} \\
+			Uncertainty estimation & \framebox(14,14){} \\
+			Mesh generation & \framebox(14,14){} \\
+			Dynamic load balancing & \framebox(14,14){} \\
+			Visualization & \framebox(14,14){} \\
+			Scalable heterogeneous computing & \framebox(14,14){} \\
+			Parallel I/O & \framebox(14,14){} \\
+			Theoretical computer science & \framebox(14,14){} \\
+			Multiscale methods & \framebox(14,14){} \\
+			Nonlinear systems & \framebox(14,14){} \\
+			Distributed systems & \framebox(14,14){} \\
+			Software engineering & \framebox(14,14){} \\
+			\\
+			Other (please specify) & { \fbox{\TextField[name=otherinterests,height=1cm,width=5cm,charsize=12pt]{}}   } \\ %\rule{5cm}{1pt}
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+	\pagebreak
+	
+	
+	\question{Scientific software developers often find themselves taking on many different responsibilities. How important are the following activities to your career currently? Answer on a scale ranging from unimportant to very important.} {
+
+		\begin{longtable}{|c| p{6cm} | p{1.25cm} p{1.25cm} p{1.25cm} p{1.25cm} p{1.25cm} |}
+			\divider
+			Q.     & Activity & Unimportant   &     & Somewhat Important &  & Very Important \\
+			\divider\divider
+			\likertfive{Conducting research}
+			\likertfive{Producing academic publications}
+			\likertfive{Writing software for your own use}
+			\likertfive{Using or modifying software written by others}
+			\likertfive{Writing software for the benefit of others}
+			\likertfive{Maintaining software for which you are responsible}
+			\likertfive{Mentoring less experienced employees}
+			\likertfive{Receiving mentoring from others}
+			\likertfive{Providing consultation or support to others}
+			\likertfive{Leveraging the talents of others}
+			\likertfive{Communicating directly with clients}
+			\likertfive{Working with people in other areas of expertise}
+			\likertfive{Working with people within your own area of expertise}
+			\likertfive{Building relationships with other teams}
+			\likertfive{Attending professional conferences}
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+	
+	
+	\pagebreak
+	
+	
+	\question{What means do you use to receive and share information with colleagues? How often do you use them? Answer on a scale ranging from never or not in the last year to daily.}
+	
+	{
+		\begin{longtable}{|c| p{6cm} | p{1.25cm} p{1.25cm} p{1.25cm} p{1.25cm} p{1.25cm} |}
+			\divider
+			Q.     & Statement & Never or not in the last year   & Less than once a month  & Monthly  & Weekly & Daily \\
+			\divider\divider
+			\heading{Face-to-face interpersonal communication}
+			\likertfive{Private, unrecorded one-on-one conversations}
+			\likertfive{Unstructured impromptu meetings with multiple people}
+			\likertfive{Regular planned meetings}
+			\likertfive{Large meetings with multiple teams or stakeholders}
+			\heading{Digital interpersonal communication}
+			\likertfive{Private email exchanges}
+			\likertfive{Public mailing lists}
+			\likertfive{One-on-one phone calls}
+			\likertfive{Conference phone calls}
+			\likertfive{SMS text messages}
+			\likertfive{Videoconferencing software (e.g. Skype, BlueJeans)}
+			\likertfive{Personal instant messaging services}
+			\heading{External sources of information}
+			\likertfive{Social media (e.g. social networking sites, forums, blogs)}
+			\likertfive{Team collaboration software (e.g. Confluence, Slack, Wiki)}
+			\likertfive{Issue tracking and task management software (e.g. Github, Bugzilla)}
+			\likertfive{Documentation, code comments, or tutorials}
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+	\pagebreak
+	
+	\question{Scientific software development demands many different kinds of expertise, oftentimes more than any one individual can possess. For each of the following topics, answer how knowledgeable or comfortable you are with that subject, on a scale from not very knowledgable to very knowledgeable. Additionally, check the box on the far right if you work with someone else that you could turn to for help on that topic.}
+	
+	{
+		\begin{longtable}{|c| p{6cm} | p{1.25cm} p{1.25cm} p{1.25cm} p{1.25cm} p{1.25cm} || p{1.25cm} |}
+			\divider
+			Q.     & Topic & Not very knowledgeable & & Somewhat knowledgeable & & Very knowledgeable & Know someone else \\
+			\divider\divider
+			
+			%Real-world knowledge
+			\likertsix{Knowledge of the real-world phenomena that the software is used to study}
+			
+			%Theory-based knowledge
+			\likertsix{The selection of mathematical techniques to attack a problem}
+			
+			%Software knowledge
+			\likertsix{Software design}
+			\likertsix{Software construction (e.g. use of C++, Fortran)}
+			
+			% Execution knowledge
+			\likertsix{Compilers and compiler optimizations}
+			\likertsix{The effects of the hardware architecture on algorithm performance}
+			\likertsix{Using a version control system}
+			
+			% Operational knowledge
+			\likertsix{How the software is integrated with client codes}
+			
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+	\pagebreak
+	
+	
+	%Based largely on questions by Latoza et al. 2006
+	\question{Are any of the following problems for software development that you encounter in your work? If so, to what extent? For each, select whether it is not a problem, a (moderately difficult) problem, or a difficult problem. }
+	
+	{
+		\begin{longtable}{|c| p{6cm} | p{2.5 cm} p{2.5 cm} p{2.5 cm}  |}
+			\divider
+			Q.  &  & Not a problem & A problem & A difficult problem\\
+			\divider\divider
+			
+			\likertthree{Understanding the rationale behind a piece of code}
+			\likertthree{Understanding code that someone else wrote}
+			\likertthree{Finding the right person to talk to about a piece of code}
+			\likertthree{Understanding the history of a piece of code}
+			\likertthree{Understanding code that I wrote a while ago}
+			\likertthree{Having to switch tasks often because of requests from my teammates or manager}
+			\likertthree{Having to switch tasks because my current task gets blocked}
+			\likertthree{Having to divide my attention between many different projects}
+			\likertthree{Being aware of changes to code elsewhere that impact my code}
+			\likertthree{Understanding the impact of changes I make on code elsewhere}
+			\likertthree{Finding the right person to review a change before a check-in}
+			\likertthree{Finding all the places code has been duplicated}
+			\likertthree{Understanding who ``owns'' a piece of code}
+			\likertthree{Finding the bugs related to a piece of code}
+			\likertthree{Finding code related to a bug}
+			\likertthree{Finding the right person to talk to about a bug}
+			\likertthree{Finding out who is currently modifying a piece of code}
+			\likertthree{Convincing managers that I should spend time rearchitecting, refactoring, or rewriting code}
+			\likertthree{Convincing developers to make changes to code I depend on}
+			%
+		\end{longtable}
+	} \incrcounter{questionnum}
+	
+\end{document}
